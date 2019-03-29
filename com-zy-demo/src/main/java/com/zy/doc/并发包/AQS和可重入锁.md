@@ -16,7 +16,7 @@ lock.unlock();    //解锁
    **AQS的全称是AbstractQueuedSynchronizer，抽象队列同步器。**
    
    ReentrantLock和AQS之间的关系如下图所示：说白了，ReentrantLock内部包含了一个AQS对象，也就是AbstractQueuedSynchronizer类型的对象。这个AQS对象对象就是ReentrantLock可以实现加锁和释放锁的关键性的核心组件。
-   ![ReentrantLock和AQS的关系](/Users/zhangya/ideaprojects/com-zy-example/com-zy-demo/src/test/java/picture/AQS和ReentrantLock的关系.jpg '''')
+   ![ReentrantLock和AQS的关系](./image/20190329-1.jpg)
 
    
    
