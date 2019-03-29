@@ -18,13 +18,14 @@ lock.unlock();    //解锁
    ReentrantLock和AQS之间的关系如下图所示：说白了，ReentrantLock内部包含了一个AQS对象，也就是AbstractQueuedSynchronizer类型的对象。
    这个AQS对象就是ReentrantLock可以实现加锁和释放锁的关键性的核心组件。
    
-   ![ReentrantLock和AQS的关系](./image/20190329-1.jpg) 
+   ![ReentrantLock和AQS的关系](./image/201903290001.jpg) 
    
 ### ReentrantLock加锁和释放锁的底层原理
 
 如果一个线程尝试用ReentrantLock的lock()方法进行加锁，会发生什么呢？
 很简单，这个AQS对象内部有一个核心的变量叫做**state**，是int类型的，代表了**加锁的状态**。初始状态下，这个state的值是0。
 另外，这个AQS内部还有一个**关键变量**，用来记录**当前加锁的是哪个线程**，初始化状态下，这个变量是null。
+
  ![AQS结构](./image/201903290002.jpg) 
 
 接着线程1调用ReentrantLock的lock()方法尝试进行加锁，这个加锁的过程，直接就是用CAS操作将state值从0变为1。
@@ -63,7 +64,7 @@ lock.unlock();    //解锁
   
   整个过程如下图所示：
   
-    ![ReentrantLock加锁整个过程](./image/201903290006.jpg) 
+   ![ReentrantLock加锁整个过程](./image/201903290006.jpg) 
     
   接下来，会**从等待队列的对头唤醒线程2重新尝试加锁**。
   线程2重新尝试加锁，这是还是用CAS操作将state从0变为1，此时就会成功，成功之后代表加锁成功，就会将state设置为1。
@@ -72,7 +73,7 @@ lock.unlock();    //解锁
   
   最后再看一张完整的过程：
   
-      ![ReentrantLock加锁整个过程](./image/201903290007.jpg) 
+   ![ReentrantLock加锁整个过程](./image/201903290007.jpg) 
       
       
 ### 总结
