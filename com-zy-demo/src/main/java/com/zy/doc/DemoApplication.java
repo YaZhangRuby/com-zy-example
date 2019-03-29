@@ -1,4 +1,4 @@
-package com.zy.demo;
+package com.zy.doc;
 
 /**
  * Hello world!

@@ -1,4 +1,4 @@
-package com.zy.demo.algorithm;
+package com.zy.doc.algorithm;
 
 /**
  * Author: zhangya
