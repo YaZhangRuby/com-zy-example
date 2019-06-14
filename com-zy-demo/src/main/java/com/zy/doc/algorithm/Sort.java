@@ -43,4 +43,24 @@ public class Sort {
         quickSort(a, low, i-1);
         quickSort(a,i+1, height);
     }
+
+    //二分法查找
+    public int binarySearch(int[] arr, int key) {
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+        int low = 0;
+        int height = arr.length - 1;
+        while (low <= height) {
+            int middle = (low + height) / 2;
+            if (key > arr[middle]) {
+                low = middle + 1;
+            } else if (key < arr[middle]) {
+                height = middle - 1;
+            } else {
+                return middle;
+            }
+        }
+        return  -1;
+    }
 }
